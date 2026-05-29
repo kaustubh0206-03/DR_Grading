@@ -136,7 +136,7 @@ def render():
         """, unsafe_allow_html=True)
         for k, v in [
             ("Backbone", "CNN + Vision Transformer"),
-            ("Input Size", "224 x 224 x 3"),
+            ("Input Size", "456 x 456 x 3"),
             ("Parameters", "~2.1M (lightweight)"),
             ("Framework", "TensorFlow 2.x / Keras"),
             ("Output", "5-Class Softmax"),

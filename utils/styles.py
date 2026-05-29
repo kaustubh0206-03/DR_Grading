@@ -815,14 +815,22 @@ def inject_global_css():
         background: linear-gradient(90deg, #3B82F6, #06B6D4) !important;
     }
 
-    /* ── Colorful Run Analysis Button (wraps st.button) ── */
-    .analysis-btn-wrapper {
-        display: flex;
-        justify-content: center;
-        margin: 1.5rem 0;
+    button[kind="primary"] {
+        background: linear-gradient(135deg, #3B82F6, #06B6D4, #8B5CF6, #3B82F6) !important;
+        background-size: 300% 300% !important;
+        animation: gradient-shift 4s ease infinite !important;
+        color: #FFFFFF !important;
+        font-weight: 700 !important;
+        border: none !important;
+        border-radius: 12px !important;
+        box-shadow: 0 4px 24px rgba(59,130,246,0.35) !important;
+        padding: 0.75rem 1.5rem !important;
     }
-    .analysis-btn-wrapper div[data-testid*="stButton"] {
-        min-width: 280px;
+    button[kind="primary"] p {
+        font-size: 1rem !important;
+        font-weight: 700 !important;
+        letter-spacing: 0.02em !important;
+        color: #FFFFFF !important;
     }
     </style>
     """, unsafe_allow_html=True)

@@ -56,7 +56,7 @@ def build_vit_branch(input_tensor):
 
 
 def build_hybrid_model():
-    inp = layers.Input(shape=(224, 224, 3))
+    inp = layers.Input(shape=(456, 456, 3))
     cnn_out = build_cnn_branch(inp)
     vit_out = build_vit_branch(inp)
     concat = layers.Concatenate()([cnn_out, vit_out])

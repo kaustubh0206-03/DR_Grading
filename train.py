@@ -53,7 +53,7 @@ def main():
         print(f"  Error: {e}")
         return
 
-    TARGET_SIZE = (224, 224)
+    TARGET_SIZE = (456, 456)
 
     train_gen = ImageDataGenerator(
         rescale=1./255,

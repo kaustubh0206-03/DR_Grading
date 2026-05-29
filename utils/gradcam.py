@@ -72,14 +72,38 @@ def compute_gradcam(model, image_array, predicted_idx):
     return _synthetic_gradcam(image_array, predicted_idx)
 
 
-def apply_heatmap_overlay(original_pil, heatmap, alpha=0.45, colormap=cv2.COLORMAP_JET):
-    orig_arr = np.array(original_pil.convert("RGB"))
+def apply_heatmap_overlay(original_pil, heatmap, alpha=0.7, colormap=None):
+    if colormap is None:
+        colormap = getattr(cv2, 'COLORMAP_TURBO', cv2.COLORMAP_JET)
+        
+    orig_arr = np.array(original_pil.convert("RGB")).astype(np.float32)
     h, w = orig_arr.shape[:2]
-    heatmap_resized = cv2.resize(heatmap, (w, h))
+    
+    # Resize with cubic interpolation for smooth scaling
+    heatmap_resized = cv2.resize(heatmap, (w, h), interpolation=cv2.INTER_CUBIC)
+    
+    # Larger Gaussian blur for an organic, realistic heat spread
+    heatmap_resized = cv2.GaussianBlur(heatmap_resized, (31, 31), 0)
+    
+    # Re-normalize to [0, 1] so the peak is fully bright
+    if heatmap_resized.max() > 0:
+        heatmap_resized = heatmap_resized / heatmap_resized.max()
+        
+    # Apply exponential curve to suppress background noise and make hotspots pop
+    heatmap_resized = heatmap_resized ** 1.5
+    
     heatmap_u8 = (heatmap_resized * 255).astype(np.uint8)
     colored = cv2.applyColorMap(heatmap_u8, colormap)
-    colored_rgb = cv2.cvtColor(colored, cv2.COLOR_BGR2RGB)
-    heatmap_pil = Image.fromarray(colored_rgb)
-    overlay = cv2.addWeighted(orig_arr, 1 - alpha, colored_rgb, alpha, 0)
+    colored_rgb = cv2.cvtColor(colored, cv2.COLOR_BGR2RGB).astype(np.float32)
+    
+    heatmap_pil = Image.fromarray(colored_rgb.astype(np.uint8))
+    
+    # Dynamic alpha blending: only apply color where heatmap is active.
+    # This prevents the dark blue background of the colormap from dimming the whole image.
+    alpha_mask = np.expand_dims(heatmap_resized, axis=2) * alpha
+    
+    overlay = (orig_arr * (1.0 - alpha_mask) + colored_rgb * alpha_mask)
+    overlay = np.clip(overlay, 0, 255).astype(np.uint8)
     overlay_pil = Image.fromarray(overlay)
+    
     return heatmap_pil, overlay_pil

@@ -245,7 +245,7 @@ def render():
         for k, v in [
             ("Dataset Size", "3,662 labeled images"),
             ("Train / Val / Test", "70% / 15% / 15%"),
-            ("Image Resolution", "224 x 224 x 3"),
+            ("Image Resolution", "456 x 456 x 3"),
             ("Optimizer", "Adam (lr=1e-4)"),
             ("Batch Size", "32"),
             ("Epochs", "40 (EarlyStopping)"),

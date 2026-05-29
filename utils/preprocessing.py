@@ -7,7 +7,7 @@ import numpy as np
 from PIL import Image
 
 
-TARGET_SIZE = (224, 224)
+TARGET_SIZE = (456, 456)
 
 DR_CLASSES = [
     "No DR",

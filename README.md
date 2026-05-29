@@ -343,7 +343,7 @@ Preprocessing improves image quality before training.
 All images are resized to:
 
 ```text
-224 × 224 × 3
+456 × 456 × 3
 ```
 
 Benefits:

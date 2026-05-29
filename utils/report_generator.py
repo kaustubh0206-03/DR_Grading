@@ -230,7 +230,7 @@ def generate_pdf_report(filename, predicted_class, confidence, probabilities,
     # Model Information
     pdf.section_title("MODEL INFORMATION")
     pdf.info_row("Architecture:", "Hybrid CNN + Vision Transformer")
-    pdf.info_row("Input Size:", "224 x 224 x 3")
+    pdf.info_row("Input Size:", "456 x 456 x 3")
     pdf.info_row("Output Classes:", "5 (No DR / Mild / Moderate / Severe / PDR)")
     pdf.info_row("Framework:", "TensorFlow / Keras")
     pdf.info_row("Version:", "DR GRADING v2.0")
