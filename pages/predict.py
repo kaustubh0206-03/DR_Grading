@@ -114,7 +114,27 @@ def render():
     <div class="section-title">AI Analysis</div>
     """, unsafe_allow_html=True)
 
-    if st.button("Run Analysis", key="run_prediction", width="stretch"):
+    st.markdown('<div class="analysis-btn-wrapper">', unsafe_allow_html=True)
+    clicked = st.button("▶  Run Analysis", key="run_prediction", width="stretch")
+    st.markdown('</div>', unsafe_allow_html=True)
+
+    st.markdown("""
+    <script>
+    (function() {
+        var t = setInterval(function() {
+            var btns = document.querySelectorAll('button');
+            for (var i = 0; i < btns.length; i++) {
+                if (btns[i].textContent.indexOf('Run Analysis') !== -1) {
+                    btns[i].style.cssText = 'background: linear-gradient(135deg, #3B82F6, #06B6D4, #8B5CF6, #3B82F6) !important; background-size: 300% 300% !important; animation: gradient-shift 4s ease infinite !important; color: #FFFFFF !important; font-weight: 700 !important; border: none !important; border-radius: 12px !important; box-shadow: 0 4px 24px rgba(59,130,246,0.35) !important; padding: 0.75rem 1.5rem !important; font-size: 1rem !important; letter-spacing: 0.02em !important;';
+                    clearInterval(t);
+                }
+            }
+        }, 50);
+    })();
+    </script>
+    """, unsafe_allow_html=True)
+
+    if clicked:
         with st.spinner(""):
             progress_placeholder = st.empty()
             for label, pct in [

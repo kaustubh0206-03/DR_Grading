@@ -1,5 +1,5 @@
 """
-RetinaGuard AI - Training Script
+DR GRADING - Training Script
 Run this to train the hybrid CNN+ViT model on your dataset.
 
 Usage:
@@ -26,16 +26,16 @@ import os
 import numpy as np
 
 def main():
-    parser = argparse.ArgumentParser(description="Train RetinaGuard AI model")
+    parser = argparse.ArgumentParser(description="Train DR GRADING model")
     parser.add_argument("--dataset",    default="./data", help="Path to dataset directory")
     parser.add_argument("--epochs",     type=int, default=40)
     parser.add_argument("--batch-size", type=int, default=32)
     parser.add_argument("--lr",         type=float, default=1e-4)
-    parser.add_argument("--output",     default="./models/weights/retinaguard_weights.h5")
+    parser.add_argument("--output",     default="./models/weights/dr_grading_weights.h5")
     args = parser.parse_args()
 
     print("=" * 60)
-    print("  RetinaGuard AI — Training Pipeline")
+    print("  DR GRADING — Training Pipeline")
     print("=" * 60)
     print(f"  Dataset  : {args.dataset}")
     print(f"  Epochs   : {args.epochs}")

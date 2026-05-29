@@ -11,7 +11,7 @@ except ImportError:
     TF_AVAILABLE = False
 
 WEIGHTS_PATH = os.path.join(os.path.dirname(os.path.dirname(__file__)),
-                             "models", "weights", "retinaguard_weights.h5")
+                             "models", "weights", "dr_grading_weights.h5")
 
 DR_CLASSES = ["No DR", "Mild DR", "Moderate DR", "Severe DR", "Proliferative DR"]
 
@@ -93,7 +93,7 @@ def _demo_prediction(preprocessed_array):
 
 @st.cache_resource(show_spinner=False)
 def _get_model_instance():
-    return RetinaGuardModel()
+    return DRGradingModel()
 
 
 def _cached_predict(model_state, arr_bytes, shape, dtype):
@@ -105,7 +105,7 @@ def _cached_predict(model_state, arr_bytes, shape, dtype):
     return probs.tolist()
 
 
-class RetinaGuardModel:
+class DRGradingModel:
     def __init__(self):
         self.loaded = False
         self.model = None

@@ -3,7 +3,7 @@ import os
 import pandas as pd
 from datetime import datetime
 
-DB_PATH = os.path.join(os.path.dirname(os.path.dirname(__file__)), "database", "retinaguard.db")
+DB_PATH = os.path.join(os.path.dirname(os.path.dirname(__file__)), "database", "dr_grading.db")
 
 
 def get_connection():

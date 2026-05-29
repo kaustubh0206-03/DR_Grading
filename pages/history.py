@@ -119,7 +119,7 @@ def render():
                 st.download_button(
                     "Export CSV",
                     data=csv_buffer.getvalue(),
-                    file_name=f"retinaguard_screenings_{datetime.now().strftime('%Y%m%d')}.csv",
+                    file_name=f"dr_grading_screenings_{datetime.now().strftime('%Y%m%d')}.csv",
                     mime="text/csv",
                     width="stretch",
                 )

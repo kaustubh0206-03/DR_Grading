@@ -6,18 +6,23 @@ def render():
     st.markdown("""
     <div class="animate-fade-in" style="text-align:center; padding: 2.5rem 1rem 1.5rem;">
         <div style="font-size:3.5rem; margin-bottom:0.75rem;
-            filter: drop-shadow(0 0 24px rgba(37,99,235,0.35));
+            filter: drop-shadow(0 0 30px rgba(59,130,246,0.4));
             line-height:1;">
-            <span style="display:inline-block; animation: pulse-glow 3s ease-in-out infinite;">👁️</span>
+            <span style="display:inline-block; animation: float 4s ease-in-out infinite;">🔬</span>
         </div>
         <h1 style="font-family:'Space Grotesk',sans-serif; font-size:2.8rem; font-weight:800;
-            background:linear-gradient(135deg,#0F172A 0%,#2563EB 40%,#06B6D4 100%);
+            background:linear-gradient(135deg,#0F172A 0%,#1E40AF 40%,#3B82F6 70%,#06B6D4 100%);
             -webkit-background-clip:text; -webkit-text-fill-color:transparent;
             background-clip:text;
-            margin-bottom:0.5rem; line-height:1.1;">
-            RetinaGuard AI
+            margin-bottom:0.5rem; line-height:1.1;
+            background-size: 200% 100%;
+            animation: gradient-shift 8s ease infinite;">
+            DR GRADING
         </h1>
-        <p style="font-size:1.05rem; color:#64748B; max-width:600px; margin:0 auto 1.25rem;
+        <div style="margin-bottom: 1rem;">
+            <span class="badge badge-blue" style="font-size:0.75rem; padding:0.3rem 1rem;">AI-Powered Retinal Screening Platform</span>
+        </div>
+        <p style="font-size:1.05rem; color:#64748B; max-width:640px; margin:0 auto 1.25rem;
             font-weight:400; line-height:1.7;">
             Next-generation diabetic retinopathy screening powered by a hybrid CNN + Vision Transformer
             architecture. Clinical-grade artificial intelligence for early detection and prevention of vision loss.
@@ -170,7 +175,7 @@ def render():
     st.markdown("""
     <div class="rg-divider"></div>
     <div class="rg-alert rg-alert-info" style="margin-top:1rem;">
-        <strong>⚕️ Clinical Decision Support:</strong> RetinaGuard AI is an AI-assisted screening platform
+        <strong>⚕️ Clinical Decision Support:</strong> DR GRADING is an AI-assisted screening platform
         designed to support clinical decision-making. All predictions and reports must be reviewed
         by a qualified ophthalmologist before any clinical action. This tool is NOT a substitute
         for professional medical examination.

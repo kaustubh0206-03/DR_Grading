@@ -8,28 +8,34 @@ from utils.styles import inject_global_css
 from utils.database import init_database
 
 st.set_page_config(
-    page_title="RetinaGuard AI",
-    page_icon="👁️",
+    page_title="DR GRADING",
+    page_icon="🔬",
     layout="wide",
     initial_sidebar_state="expanded",
     menu_items={
         'Get Help': None,
         'Report a bug': None,
-        'About': "RetinaGuard AI v2.0 — Advanced Diabetic Retinopathy Screening Platform"
+        'About': "DR GRADING v2.0 — Advanced Diabetic Retinopathy Screening Platform"
     }
 )
 
 init_database()
 inject_global_css()
 
+st.markdown("""
+<div class="bg-orb bg-orb-1"></div>
+<div class="bg-orb bg-orb-2"></div>
+<div class="bg-orb bg-orb-3"></div>
+""", unsafe_allow_html=True)
+
 # ─── Sidebar ────────────────────────────────────────────────────────────────
 with st.sidebar:
     st.markdown("""
     <div class="sidebar-logo">
-        <div class="logo-icon">👁️</div>
+        <div class="logo-icon">🔬</div>
         <div class="logo-text">
-            <span class="logo-title">RetinaGuard</span>
-            <span class="logo-subtitle">AI Screening Platform</span>
+            <span class="logo-title">DR GRADING</span>
+            <span class="logo-subtitle">AI Screening System</span>
         </div>
     </div>
     """, unsafe_allow_html=True)
@@ -66,7 +72,7 @@ with st.sidebar:
 
     st.markdown("""
     <div class="sidebar-footer">
-        <span>RetinaGuard AI v2.0</span><br>
+        <span class="version">DR GRADING v2.0</span><br>
         <span style="color:#475569; font-size:10px;">© 2026 · All rights reserved</span>
     </div>
     """, unsafe_allow_html=True)

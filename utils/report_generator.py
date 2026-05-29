@@ -74,7 +74,7 @@ class DrReport(FPDF if FPDF_AVAILABLE else object):
             self.rect(0, 0, 210, 48, 'F')
             self.set_font("Helvetica", "B", 22)
             self.set_text_color(37, 99, 235)
-            self.cell(0, 14, "RetinaGuard AI", ln=True, align="C")
+            self.cell(0, 14, "DR GRADING", ln=True, align="C")
             self.set_font("Helvetica", "", 10)
             self.set_text_color(148, 163, 184)
             self.cell(0, 7, "Diabetic Retinopathy Screening Report", ln=True, align="C")
@@ -85,14 +85,14 @@ class DrReport(FPDF if FPDF_AVAILABLE else object):
         else:
             self.set_font("Helvetica", "I", 7)
             self.set_text_color(100, 116, 139)
-            self.cell(0, 8, "RetinaGuard AI  |  Diabetic Retinopathy Screening Report", align="R")
+            self.cell(0, 8, "DR GRADING  |  Diabetic Retinopathy Screening Report", align="R")
             self.ln(4)
 
     def footer(self):
         self.set_y(-15)
         self.set_font("Helvetica", "I", 7)
         self.set_text_color(100, 116, 139)
-        self.cell(0, 10, f"Page {self.page_no()}/{{nb}}  |  Generated: {datetime.now().strftime('%Y-%m-%d %H:%M')}  |  RetinaGuard AI v2.0", align="C")
+        self.cell(0, 10, f"Page {self.page_no()}/{{nb}}  |  Generated: {datetime.now().strftime('%Y-%m-%d %H:%M')}  |  DR GRADING v2.0", align="C")
 
     def section_title(self, title):
         self.set_x(self.l_margin)
@@ -233,7 +233,7 @@ def generate_pdf_report(filename, predicted_class, confidence, probabilities,
     pdf.info_row("Input Size:", "224 x 224 x 3")
     pdf.info_row("Output Classes:", "5 (No DR / Mild / Moderate / Severe / PDR)")
     pdf.info_row("Framework:", "TensorFlow / Keras")
-    pdf.info_row("Version:", "RetinaGuard AI v2.0")
+    pdf.info_row("Version:", "DR GRADING v2.0")
 
     # Disclaimer
     pdf.ln(4)
@@ -259,7 +259,7 @@ def generate_text_report(filename, predicted_class, confidence, probabilities, q
     note = get_clinical_note(predicted_class)
     lines = [
         "=" * 60,
-        "          RetinaGuard AI - Screening Report",
+        "          DR GRADING - Screening Report",
         "=" * 60,
         f"Date       : {datetime.now().strftime('%Y-%m-%d %H:%M')}",
         f"File       : {filename}",
